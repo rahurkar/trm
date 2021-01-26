@@ -30,9 +30,8 @@ where RAND() < 100/26742011
 
 def query_agg(use_lifespan=True):
     """
-    Average processing time (over 100 queries) = 0.68s
-    This performs better likely due to the underlying partitioned
-    dataset.
+    Average processing time (over 100 queries) = 1.2s (Using address lifespan)
+    Average processing time (over 100 queries) = 4.7s (w/o using address lifespan)
     """
     table = 'daily_aggregate_view'
     fname = 'data/direct_exposure_100_no_lifespan.csv'
@@ -91,8 +90,8 @@ def query_agg(use_lifespan=True):
 
 def query_direct_exposure():
     """
-    Average processing time (over 100 queries) = 1.1s
-    This approach should be better if we can switch to GCP datastore.
+    Average processing time (over 100 queries) = 1.4s
+    Performance could be better if we switch to GCP datastore.
     """
     table = 'transactions_direct_exposure'
     fname = 'data/direct_exposure_100.csv'
