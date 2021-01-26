@@ -1,0 +1,12 @@
+sequenceDiagram
+    User-->>+Flask: HTTP Request (address, top_n, ...)
+    Flask-->>+Cache: materialized_view_from_cache(address, top_n)
+    Cache-->>+Flask: data (Cache Hit)
+    Flask-->>+User: sorted_with_offset(data)
+    Cache-->>+Flask: data (Cache Miss)
+    Flask-->>+Address Lifespan: get_lifespan(address)
+    Address Lifespan-->>+Flask: min_ts, max_ts
+    Flask-->>+Partitioned Store: top_flows(address, min_ts, max_ts)
+    Partitioned Store-->>Flask: JSON Payload
+    Flask-->>+Cache: update_cache(address, top_n, payload)
+    Flask-->>+User: sorted_with_offset(data)
