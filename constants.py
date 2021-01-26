@@ -2,4 +2,4 @@ DELIM = ','
 
 DEFAULT_START_DATE = '0001-01-01T00:00:00Z'
 DEFAULT_END_DATE = '9999-12-31T23:59:59Z'
-DE_LIFESPAN_DATA = 'address_lifespan.csv'
+DE_LIFESPAN_DATA = 'data/address_lifespan.csv'

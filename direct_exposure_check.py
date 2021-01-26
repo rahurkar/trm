@@ -34,14 +34,13 @@ def query_agg(use_lifespan=True):
     This performs better likely due to the underlying partitioned
     dataset.
     """
-    table = 'agg_daily_transactions'
-    table = 'temp_view'
-    fname = 'direct_exposure_100_no_lifespan.csv'
+    table = 'daily_aggregate_view'
+    fname = 'data/direct_exposure_100_no_lifespan.csv'
 
     if use_lifespan:
         # use different random dataset to avoid internal
         # bq caching affect perf numbers
-        fname = 'direct_exposure_100_lifespan.csv'
+        fname = 'data/direct_exposure_100_lifespan.csv'
         lifespan = Lifespan()
         lifespan.read_lifespan(DE_LIFESPAN_DATA)
 
@@ -96,7 +95,7 @@ def query_direct_exposure():
     This approach should be better if we can switch to GCP datastore.
     """
     table = 'transactions_direct_exposure'
-    fname = 'direct_exposure_100.csv'
+    fname = 'data/direct_exposure_100.csv'
     with open(fname, 'r') as fp:
         next(fp)  # skip header
         start = time.time()
@@ -124,5 +123,5 @@ def query_direct_exposure():
 
 if __name__ == "__main__":
     query_agg(use_lifespan=True)
-    # query_agg(use_lifespan=False)
-    #query_direct_exposure()
+    query_agg(use_lifespan=False)
+query_direct_exposure()
