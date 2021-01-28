@@ -1,3 +1,10 @@
+"""
+This code uses the concept of lifespan and maintains min and max timestamps.
+As it turns out, address may have a larger lifespan but is active only for
+few days in the span.
+
+Have NOT implemented it here.
+"""
 from collections import defaultdict
 from constants import DELIM
 import datetime

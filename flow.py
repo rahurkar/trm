@@ -164,7 +164,7 @@ def top_flows(query_address, flow_type=FlowType.TOTAL_FLOW.value, start_date=DEF
 
 
 if __name__ == "__main__":
-    fname = 'data/address_10.csv'
+    fname = 'data/address_200.csv'
     num_queries = 0
     use_lifespan = True
     lifespan = Lifespan()
